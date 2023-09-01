@@ -316,7 +316,7 @@ const BackgroundList = ({
   );
 };
 const Models = () => {
-  const modellist = ["model1", "model2", "model3", "model4", "model5"];
+  const modellist = ["model1", "model2", "model3", "model4"];
   return (
     <>
       <h3 className="mb-[20px] text-xl font-bold text-white">모델</h3>
