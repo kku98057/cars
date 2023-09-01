@@ -264,8 +264,6 @@ const Backgrounds = () => {
     "blouberg_sunrise_2_1k.hdr",
     "envi_2k.hdr",
     "KNRT-old_depot_2k.hdr",
-    "4k.hdr",
-    "8k.hdr",
   ];
   return (
     <>
