@@ -12,8 +12,8 @@ export const AtomGearColors = atom<string>({
   key: "AtomGearColorsKey",
   default: "base",
 });
-export const AtomCylinderColors = atom<string>({
-  key: "AtomCylinderColorsKey",
+export const AtomTireWheelColors = atom<string>({
+  key: "AtomTireWheelColorsKey",
   default: "base",
 });
 export const AtomMaps = atom<string>({

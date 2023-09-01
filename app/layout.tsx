@@ -7,10 +7,10 @@ import Layout from "@/components/layout/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// export const metadata: Metadata = {
-//   title: "Cars",
-//   description: "3d Cars",
-// };
+export const metadata: Metadata = {
+  title: "Cars",
+  description: "3d Cars",
+};
 
 export default function RootLayout({
   children,

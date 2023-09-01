@@ -4,7 +4,7 @@ import {
   AtomBumperColors,
   AtomTab,
   AtomGearColors,
-  AtomCylinderColors,
+  AtomTireWheelColors,
   AtomMaps,
   AtomModel,
   AtomCameraPosition,
@@ -13,40 +13,52 @@ import { BiSolidColorFill } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { PiSelectionBackgroundFill } from "react-icons/pi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { CiSettings } from "react-icons/ci";
+import { useState } from "react";
 
 export default function SideBar() {
   const sideList = [
+    <AiFillCar key={"model"} />,
     <BiSolidColorFill key={"color"} />,
     <BsFillCameraVideoFill key={"camera"} />,
     <PiSelectionBackgroundFill key={"background"} />,
-    <AiFillCar key={"model"} />,
   ];
-  const sideListValue = ["color", "camera", "background", "model"];
+  const sideListValue = ["model", "color", "camera", "background"];
   const [tab, setTab] = useRecoilState(AtomTab);
+  const [toggle, setToggle] = useState(true);
 
   return (
-    <div className="fixed right-1 top-0 z-[1] h-screen w-full max-w-sm flex-[0.25]  bg-slate-800">
-      <div className="top-0 flex w-full ">
-        <div className="tab w-[70px]">
-          <ul className="w-full border-b-2 border-slate-400 ">
-            {sideList.map((li, idx) => (
-              <SideList
-                title={li}
-                key={`color_${idx}`}
-                sideListValue={sideListValue[idx]}
-              />
-            ))}
-          </ul>
+    <>
+      <CiSettings
+        className="text-[30px] absolute top-[20px] right-[20px] md:left-[20px]"
+        onClick={() => {
+          setToggle((prev) => !prev);
+        }}
+      />
+      {toggle && (
+        <div className="md:max-w-sm md:h-screen md:top-0 h-[280px] overflow-auto fixed right-1 bottom-0 z-[1]  w-full flex-[0.25]  bg-slate-800">
+          <div className="top-0 flex w-full relative ">
+            <div className="tab w-[70px]">
+              <ul className="w-full border-b-2 border-slate-400 ">
+                {sideList.map((li, idx) => (
+                  <SideList
+                    title={li}
+                    key={`color_${idx}`}
+                    sideListValue={sideListValue[idx]}
+                  />
+                ))}
+              </ul>
+            </div>
+            <div className="h-full flex-1 p-[20px]">
+              {tab === "color" && <SideColorTab />}
+              {tab === "camera" && <SideCameraTab />}
+              {tab === "background" && <SideBackgroundTab />}
+              {tab === "model" && <Models />}
+            </div>
+          </div>
         </div>
-        <div className="h-full flex-1 p-[20px]">
-          {tab === "color" && <SideColorTab />}
-          {tab === "camera" && <SideCameraTab />}
-          {tab === "background" && <SideBackgroundTab />}
-          {tab === "model" && <Models />}
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
@@ -75,7 +87,7 @@ const SideColorTab = () => {
     <>
       <Bumpers />
       <Gears />
-      <Cylinder />
+      <TireWheel />
     </>
   );
 };
@@ -83,7 +95,7 @@ const Bumpers = () => {
   const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
   return (
     <>
-      <h3 className="mb-[20px] text-xl font-bold text-white">범퍼</h3>
+      <h3 className="mb-[20px] text-xl font-bold text-white">차체</h3>
       <ul className="flex flex-col gap-3">
         {colorsLists.map((li, idx) => (
           <BumberLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
@@ -96,7 +108,7 @@ const Gears = () => {
   const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
   return (
     <>
-      <h3 className="my-[20px] text-xl font-bold text-white">기어</h3>
+      <h3 className="my-[20px] text-xl font-bold text-white">캘리퍼</h3>
       <ul className="flex flex-col gap-3">
         {colorsLists.map((li, idx) => (
           <GearLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
@@ -105,14 +117,19 @@ const Gears = () => {
     </>
   );
 };
-const Cylinder = () => {
+const TireWheel = () => {
   const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
   return (
     <>
-      <h3 className="my-[20px] text-xl font-bold text-white">실린더</h3>
+      <h3 className="my-[20px] text-xl font-bold text-white">휠</h3>
       <ul className="flex flex-col gap-3">
         {colorsLists.map((li, idx) => (
-          <CylinderLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
+          <TireWheelLists
+            li={li}
+            key={li}
+            idx={idx}
+            colorsLists={colorsLists}
+          />
         ))}
       </ul>
     </>
@@ -194,7 +211,7 @@ const GearLists = ({
     </li>
   );
 };
-const CylinderLists = ({
+const TireWheelLists = ({
   li,
   idx,
   colorsLists,
@@ -203,7 +220,7 @@ const CylinderLists = ({
   idx: number;
   colorsLists: string[];
 }) => {
-  const [colors, setColors] = useRecoilState(AtomCylinderColors);
+  const [colors, setColors] = useRecoilState(AtomTireWheelColors);
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setColors(value);
@@ -212,13 +229,13 @@ const CylinderLists = ({
   return (
     <li>
       <label
-        htmlFor={`cylinderColor_${li}`}
+        htmlFor={`TireWheelColor_${li}`}
         className="flex items-center gap-2"
       >
         <input
           type="radio"
-          name="cylinderColor"
-          id={`cylinderColor_${li}`}
+          name="TireWheelColor"
+          id={`TireWheelColor_${li}`}
           className="h-[15px] w-[15px]"
           onChange={changeHandler}
           checked={colors === li}
@@ -247,6 +264,8 @@ const Backgrounds = () => {
     "blouberg_sunrise_2_1k.hdr",
     "envi_2k.hdr",
     "KNRT-old_depot_2k.hdr",
+    "4k.hdr",
+    "8k.hdr",
   ];
   return (
     <>
@@ -299,7 +318,7 @@ const BackgroundList = ({
   );
 };
 const Models = () => {
-  const modellist = ["model1", "model2", "model3", "model4"];
+  const modellist = ["model1", "model2", "model3", "model4", "model5"];
   return (
     <>
       <h3 className="mb-[20px] text-xl font-bold text-white">모델</h3>
@@ -323,15 +342,15 @@ const ModelsList = ({
   const [model, setModel] = useRecoilState(AtomModel);
   const [bumperColors, setBumperColors] = useRecoilState(AtomBumperColors);
   const [gearColors, setGearColors] = useRecoilState(AtomGearColors);
-  const [cylinderColors, setCylinderColors] =
-    useRecoilState(AtomCylinderColors);
+  const [TireWheelColors, setTireWheelColors] =
+    useRecoilState(AtomTireWheelColors);
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setModel(value);
     // 모델이 바뀔떄 색상 초기화
     setBumperColors("base");
     setGearColors("base");
-    setCylinderColors("base");
+    setTireWheelColors("base");
   };
 
   return (
