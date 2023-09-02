@@ -48,7 +48,10 @@ type nowPosition = {
 };
 const MyScene = () => {
   const [color, setColor] = useState("white");
-  const envMap = useEnvironment({ files: "/envi_2k.hdr" });
+  const envMap = useEnvironment({
+    files:
+      "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/sunset_fairway_4k.hdr",
+  });
   const [mapFile, setMapFile] = useRecoilState(AtomMaps);
   const [model, setModel] = useRecoilState(AtomModel);
   const [orbitEnable, setOrbitEnable] = useRecoilState(AtomOrbitEnable);
