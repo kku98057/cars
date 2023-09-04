@@ -46,9 +46,9 @@ export default function SideBar() {
       />
       {toggle && (
         <div className="md:max-w-sm md:h-screen md:top-0 h-[280px] overflow-auto fixed right-1 bottom-0 z-[1]  w-full flex-[0.25]  bg-slate-800">
-          <div className="relative top-0 flex w-full ">
-            <div className="tab w-[70px]">
-              <ul className="w-full ">
+          <div className="relative top-0 w-full md:flex ">
+            <div className="tab md:w-[70px] w-full">
+              <ul className="flex w-full md:block">
                 {sideList.map((li, idx) => (
                   <SideList
                     title={li}
@@ -83,15 +83,10 @@ const SideList = ({
 
   return (
     <li
-      className="flex h-[60px] cursor-pointer items-center justify-center p-[10px]"
-      style={{
-        borderRight:
-          isClick === tab
-            ? "5px solid rgb(114 172 245 / 64%)"
-            : "5px solid transparent",
-      }}
+      className={`side_list flex h-[60px] cursor-pointer items-center justify-center p-[10px] w-[60px] md:w-[70px] ${
+        isClick === tab ? "active" : ""
+      }`}
       onClick={() => {
-        console.log(sideListValue, isClick);
         setTab(sideListValue);
         setIsClick(sideListValue);
       }}

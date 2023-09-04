@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.side_list {
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+.side_list.active {
+  border-right: 5px solid rgb(114 172 245 / 64%);
+}
+@media all and (max-width: 768px) {
+  .side_list.active {
+    border-right: initial;
+
+    border-bottom: 5px solid rgb(114 172 245 / 64%);
+  }
+  .tab {
+    position: sticky;
+    background-color: rgb(30 41 59);
+    top: 0;
+  }
+}
