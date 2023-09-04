@@ -13,7 +13,6 @@ import {
   OrbitControls,
   PerspectiveCamera,
   RandomizedLight,
-  useEnvironment,
   useProgress,
 } from "@react-three/drei";
 
@@ -96,7 +95,7 @@ const MyScene = () => {
       </Suspense>
 
       {model === "model1" && (
-        <Model position={[0, 9, 0]} rotation={[0, 0, 0]} scale={15} />
+        <Model position={[0, 9.5, 0]} rotation={[0, 0, 0]} scale={15} />
       )}
 
       {model === "model2" && (
@@ -115,13 +114,13 @@ const MyScene = () => {
       )}
       {model === "model4" && (
         <Model4
-          position={[0, 0, 0]}
+          position={[0, 0.2, 0]}
           rotation={[0, Math.PI / 8, 0]}
           scale={12}
         />
       )}
       <ContactShadows
-        opacity={0.5}
+        opacity={0.8}
         scale={100}
         blur={1}
         far={100}
@@ -136,7 +135,7 @@ const MyScene = () => {
         minPolarAngle={0}
         maxPolarAngle={Math.PI / 2.25}
         makeDefault
-        maxDistance={100}
+        maxDistance={120}
         minDistance={70}
       />
       <PerspectiveCamera
