@@ -9,11 +9,12 @@ import {
   AtomModel,
   AtomCameraPosition,
   AtomProgress,
+  AtomWireFrmae,
 } from "@/components/atoms/atoms";
 import { BiSolidColorFill } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { AiFillCar } from "react-icons/ai";
-import { PiSelectionBackgroundFill } from "react-icons/pi";
+import { PiSelectionBackgroundFill, PiLineSegmentsLight } from "react-icons/pi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { CiSettings } from "react-icons/ci";
 import { useState } from "react";
@@ -30,8 +31,9 @@ export default function SideBar() {
   ];
   const sideListValue = ["model", "color", "camera", "background"];
   const [tab, setTab] = useRecoilState(AtomTab);
+  const [wireFrame, setWireFrame] = useRecoilState(AtomWireFrmae);
   const [toggle, setToggle] = useState(true);
-
+  const [isSidelistClick, setIsSidelistClick] = useState<boolean>(false);
   if (atomProgress) {
     return null;
   }
@@ -56,6 +58,18 @@ export default function SideBar() {
                     sideListValue={sideListValue[idx]}
                   />
                 ))}
+                <li
+                  className={`side_list flex h-[60px] cursor-pointer items-center justify-center p-[10px] w-[60px] md:w-[70px] ${
+                    wireFrame ? "wire_active" : ""
+                  } `}
+                  onClick={() => {
+                    setWireFrame((prev) => !prev);
+                  }}
+                >
+                  <span className="text-3xl text-white">
+                    <PiLineSegmentsLight />
+                  </span>
+                </li>
               </ul>
             </div>
             <div className="h-full flex-1 p-[20px]">
@@ -383,6 +397,7 @@ const BackgroundList = ({
 };
 const Models = () => {
   const [accordian, setAccordian] = useState(false);
+
   const modellist = ["model1", "model2", "model3", "model4"];
   return (
     <>
@@ -419,6 +434,7 @@ const ModelsList = ({
   const [model, setModel] = useRecoilState(AtomModel);
   const [bumperColors, setBumperColors] = useRecoilState(AtomBumperColors);
   const [gearColors, setGearColors] = useRecoilState(AtomGearColors);
+  const [wireFrame, setWireFrame] = useRecoilState(AtomWireFrmae);
   const [TireWheelColors, setTireWheelColors] =
     useRecoilState(AtomTireWheelColors);
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -427,6 +443,7 @@ const ModelsList = ({
     // 모델이 바뀔떄 색상 초기화
     setBumperColors("base");
     setGearColors("base");
+    setWireFrame(false);
     setTireWheelColors("base");
   };
 

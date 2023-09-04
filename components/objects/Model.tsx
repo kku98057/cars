@@ -12,7 +12,9 @@ import {
   AtomBumperColors,
   AtomTireWheelColors,
   AtomGearColors,
+  AtomWireFrmae,
 } from "../atoms/atoms";
+import { useFrame, useThree } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -90,11 +92,25 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
 
   const [bumperColors, setBumperColors] = useRecoilState(AtomBumperColors);
   const [gearColors, setGearColors] = useRecoilState(AtomGearColors);
+  const [wireFrame, setWireFrame] = useRecoilState(AtomWireFrmae);
   const [tireWheelColors, setTireWheelColorss] =
     useRecoilState(AtomTireWheelColors);
+  const { scene } = useThree();
+
+  useEffect(() => {
+    scene.traverse((obj) => {
+      if (obj.name === "mesh") {
+        obj.traverse((item) => {
+          if (item instanceof THREE.Mesh) {
+            item.material.wireframe = wireFrame;
+          }
+        });
+      }
+    });
+  }, [wireFrame]);
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} name="mesh">
       <group
         position={[0, -0.009, 0.063]}
         rotation={[-Math.PI / 2, 0, 0]}

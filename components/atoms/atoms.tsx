@@ -53,3 +53,8 @@ export const AtomProgress = atom({
   key: "AtomProgressKay",
   default: true,
 });
+
+export const AtomWireFrmae = atom({
+  key: "AtomWireFrmaeKey",
+  default: false,
+});

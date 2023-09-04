@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.2.13 cc.glb -t
 */
 
 import * as THREE from "three";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useRecoilState } from "recoil";
@@ -12,7 +12,9 @@ import {
   AtomBumperColors,
   AtomGearColors,
   AtomTireWheelColors,
+  AtomWireFrmae,
 } from "../atoms/atoms";
+import { useThree } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -228,9 +230,22 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
     useRecoilState(AtomTireWheelColors);
 
   const { nodes, materials } = useGLTF("/model3.glb") as GLTFResult;
+  const [wireFrame, setWireFrame] = useRecoilState(AtomWireFrmae);
+  const { scene } = useThree();
+  useEffect(() => {
+    scene.traverse((obj) => {
+      if (obj.name === "mesh") {
+        obj.traverse((item) => {
+          if (item instanceof THREE.Mesh) {
+            item.material.wireframe = wireFrame;
+          }
+        });
+      }
+    });
+  }, [wireFrame]);
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} name="mesh">
       <group scale={0.01}>
         <group position={[75.335, 29.897, 111.094]}>
           <mesh

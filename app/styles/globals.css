@@ -4,10 +4,12 @@
 
 .side_list {
   border-right: 5px solid transparent;
-  border-bottom: 5px solid transparent;
 }
 .side_list.active {
   border-right: 5px solid rgb(114 172 245 / 64%);
+}
+.side_list.wire_active {
+  background-color: rgb(114 172 245 / 64%);
 }
 @media all and (max-width: 768px) {
   .side_list.active {

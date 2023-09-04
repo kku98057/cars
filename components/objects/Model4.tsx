@@ -4,15 +4,17 @@ Command: npx gltfjsx@6.2.13 model4.glb -t
 */
 
 import * as THREE from "three";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useRecoilState } from "recoil";
 import {
   AtomBumperColors,
+  AtomWireFrmae,
   AtomGearColors,
   AtomTireWheelColors,
 } from "../atoms/atoms";
+import { useThree } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -270,9 +272,21 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
   const [gearColors, setGearColors] = useRecoilState(AtomGearColors);
   const [tireWheelColors, setTireWheelColors] =
     useRecoilState(AtomTireWheelColors);
-
+  const [wireFrame, setWireFrame] = useRecoilState(AtomWireFrmae);
+  const { scene } = useThree();
+  useEffect(() => {
+    scene.traverse((obj) => {
+      if (obj.name === "mesh") {
+        obj.traverse((item) => {
+          if (item instanceof THREE.Mesh) {
+            item.material.wireframe = wireFrame;
+          }
+        });
+      }
+    });
+  }, [wireFrame]);
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} name="mesh">
       <group scale={0.01}>
         <group position={[78.749, 31.851, 120.457]}>
           <mesh
@@ -384,6 +398,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             material={materials.Glass}
           >
             <meshPhysicalMaterial
+              side={THREE.DoubleSide}
               opacity={0.1}
               blending={THREE.CustomBlending}
             />
@@ -394,6 +409,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
+                side={THREE.DoubleSide}
                 metalness={0.5}
                 roughness={0.3}
                 ior={1.5}
@@ -448,7 +464,17 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           <mesh
             geometry={nodes.polymsh_detached26_SUB4_Carpaint_Main_0.geometry}
             material={materials.Carpaint_Main_0}
-          />
+          >
+            {bumperColors !== "base" && (
+              <meshPhysicalMaterial
+                side={THREE.DoubleSide}
+                metalness={0.5}
+                roughness={0.3}
+                ior={1.5}
+                color={new THREE.Color(bumperColors)}
+              />
+            )}
+          </mesh>
           <mesh
             geometry={
               nodes.polymsh_detached26_SUB5_INT_Metallo_semiopaco_0.geometry
@@ -478,6 +504,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             material={materials.Glass}
           >
             <meshPhysicalMaterial
+              side={THREE.DoubleSide}
               opacity={0.1}
               blending={THREE.CustomBlending}
             />
@@ -488,6 +515,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
+                side={THREE.DoubleSide}
                 metalness={0.5}
                 roughness={0.3}
                 ior={1.5}
@@ -523,6 +551,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
+                side={THREE.DoubleSide}
                 metalness={0.5}
                 roughness={0.3}
                 ior={1.5}
@@ -562,6 +591,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
+                side={THREE.DoubleSide}
                 metalness={0.5}
                 roughness={0.3}
                 ior={1.5}
@@ -577,6 +607,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
+                side={THREE.DoubleSide}
                 metalness={0.5}
                 roughness={0.3}
                 ior={1.5}
@@ -930,7 +961,17 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
         <mesh
           geometry={nodes.cube_SUB19_Carpaint_Main_0.geometry}
           material={materials.Carpaint_Main_0}
-        />
+        >
+          {bumperColors !== "base" && (
+            <meshPhysicalMaterial
+              side={THREE.DoubleSide}
+              metalness={0.5}
+              roughness={0.3}
+              ior={1.5}
+              color={new THREE.Color(bumperColors)}
+            />
+          )}
+        </mesh>
         <mesh
           geometry={nodes.cube_SUB2_INT_Vetro_0.geometry}
           material={materials["INT_Vetro.001"]}
@@ -1129,7 +1170,17 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
         <mesh
           geometry={nodes.GEO_Cockpit_SUB1_Carpaint_Main_0.geometry}
           material={materials.Carpaint_Main_0}
-        />
+        >
+          {bumperColors !== "base" && (
+            <meshPhysicalMaterial
+              side={THREE.DoubleSide}
+              metalness={0.5}
+              roughness={0.3}
+              ior={1.5}
+              color={new THREE.Color(bumperColors)}
+            />
+          )}
+        </mesh>
         <mesh
           geometry={nodes.front_light1_2_front_light1_0.geometry}
           material={materials.front_light1}
@@ -1167,7 +1218,11 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           material={materials.INT_Glass_side}
           name="window"
         >
-          <meshPhysicalMaterial opacity={0.1} blending={THREE.CustomBlending} />
+          <meshPhysicalMaterial
+            opacity={0.1}
+            blending={THREE.CustomBlending}
+            side={THREE.DoubleSide}
+          />
         </mesh>
         <mesh
           geometry={nodes.g_BODY_EXT_SUB4_Rubber_Black_0.geometry}
@@ -1196,6 +1251,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
         >
           {bumperColors !== "base" && (
             <meshPhysicalMaterial
+              side={THREE.DoubleSide}
               metalness={0.5}
               roughness={0.3}
               ior={1.5}
