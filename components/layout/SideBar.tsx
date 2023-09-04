@@ -8,15 +8,20 @@ import {
   AtomMaps,
   AtomModel,
   AtomCameraPosition,
+  AtomProgress,
 } from "@/components/atoms/atoms";
 import { BiSolidColorFill } from "react-icons/bi";
+import { RiArrowRightSLine } from "react-icons/ri";
 import { AiFillCar } from "react-icons/ai";
 import { PiSelectionBackgroundFill } from "react-icons/pi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { CiSettings } from "react-icons/ci";
 import { useState } from "react";
 
+import React from "react";
+
 export default function SideBar() {
+  const [atomProgress, setAtomProgress] = useRecoilState(AtomProgress);
   const sideList = [
     <AiFillCar key={"model"} />,
     <BiSolidColorFill key={"color"} />,
@@ -26,6 +31,10 @@ export default function SideBar() {
   const sideListValue = ["model", "color", "camera", "background"];
   const [tab, setTab] = useRecoilState(AtomTab);
   const [toggle, setToggle] = useState(true);
+
+  if (atomProgress) {
+    return null;
+  }
 
   return (
     <>
@@ -37,9 +46,9 @@ export default function SideBar() {
       />
       {toggle && (
         <div className="md:max-w-sm md:h-screen md:top-0 h-[280px] overflow-auto fixed right-1 bottom-0 z-[1]  w-full flex-[0.25]  bg-slate-800">
-          <div className="top-0 flex w-full relative ">
+          <div className="relative top-0 flex w-full ">
             <div className="tab w-[70px]">
-              <ul className="w-full border-b-2 border-slate-400 ">
+              <ul className="w-full ">
                 {sideList.map((li, idx) => (
                   <SideList
                     title={li}
@@ -70,11 +79,21 @@ const SideList = ({
   sideListValue: string;
 }) => {
   const [tab, setTab] = useRecoilState(AtomTab);
+  const [isClick, setIsClick] = useState(sideListValue);
+
   return (
     <li
-      className="flex h-[70px] cursor-pointer items-center justify-center border-2 border-b-0 border-slate-400 p-[10px]"
+      className="flex h-[60px] cursor-pointer items-center justify-center p-[10px]"
+      style={{
+        borderRight:
+          isClick === tab
+            ? "5px solid rgb(114 172 245 / 64%)"
+            : "5px solid transparent",
+      }}
       onClick={() => {
+        console.log(sideListValue, isClick);
         setTab(sideListValue);
+        setIsClick(sideListValue);
       }}
     >
       <span className="text-3xl text-white">{title}</span>
@@ -93,45 +112,84 @@ const SideColorTab = () => {
 };
 const Bumpers = () => {
   const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
+  const [accordian, setAccordian] = useState(false);
   return (
     <>
-      <h3 className="mb-[20px] text-xl font-bold text-white">차체</h3>
-      <ul className="flex flex-col gap-3">
-        {colorsLists.map((li, idx) => (
-          <BumberLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
-        ))}
-      </ul>
+      <div
+        className="mb-[20px] text-xl font-bold text-white cursor-pointer flex items-center justify-between w-full"
+        onClick={() => {
+          setAccordian((prev) => !prev);
+        }}
+      >
+        <h3>BASE </h3>
+        <RiArrowRightSLine
+          style={{ transform: accordian ? "rotate(-90deg)" : "rotate(90deg)" }}
+        />
+      </div>
+      {accordian && (
+        <ul className="flex flex-col gap-3 mb-[20px]">
+          {colorsLists.map((li, idx) => (
+            <BumberLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
 const Gears = () => {
+  const [accordian, setAccordian] = useState(false);
   const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
   return (
     <>
-      <h3 className="my-[20px] text-xl font-bold text-white">캘리퍼</h3>
-      <ul className="flex flex-col gap-3">
-        {colorsLists.map((li, idx) => (
-          <GearLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
-        ))}
-      </ul>
+      <div
+        className="mb-[20px] text-xl font-bold text-white cursor-pointer flex items-center justify-between w-full"
+        onClick={() => {
+          setAccordian((prev) => !prev);
+        }}
+      >
+        <h3>CALIPER</h3>
+        <RiArrowRightSLine
+          style={{ transform: accordian ? "rotate(-90deg)" : "rotate(90deg)" }}
+        />
+      </div>
+      {accordian && (
+        <ul className="flex flex-col gap-3 mb-[20px]">
+          {colorsLists.map((li, idx) => (
+            <GearLists li={li} key={li} idx={idx} colorsLists={colorsLists} />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
 const TireWheel = () => {
+  const [accordian, setAccordian] = useState(false);
   const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
   return (
     <>
-      <h3 className="my-[20px] text-xl font-bold text-white">휠</h3>
-      <ul className="flex flex-col gap-3">
-        {colorsLists.map((li, idx) => (
-          <TireWheelLists
-            li={li}
-            key={li}
-            idx={idx}
-            colorsLists={colorsLists}
-          />
-        ))}
-      </ul>
+      <div
+        className="mb-[20px] text-xl font-bold text-white cursor-pointer flex items-center justify-between w-full"
+        onClick={() => {
+          setAccordian((prev) => !prev);
+        }}
+      >
+        <h3>WHEEL</h3>
+        <RiArrowRightSLine
+          style={{ transform: accordian ? "rotate(-90deg)" : "rotate(90deg)" }}
+        />
+      </div>
+      {accordian && (
+        <ul className="flex flex-col gap-3 mb-[20px]">
+          {colorsLists.map((li, idx) => (
+            <TireWheelLists
+              li={li}
+              key={li}
+              idx={idx}
+              colorsLists={colorsLists}
+            />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
@@ -260,6 +318,7 @@ const SideBackgroundTab = () => {
   );
 };
 const Backgrounds = () => {
+  const [accordian, setAccordian] = useState(false);
   const backgroundlist = [
     "blouberg_sunrise_2_1k.hdr",
     "envi_2k.hdr",
@@ -267,17 +326,29 @@ const Backgrounds = () => {
   ];
   return (
     <>
-      <h3 className="mb-[20px] text-xl font-bold text-white">배경이미지</h3>
-      <ul className="flex flex-col gap-3">
-        {backgroundlist.map((li, idx) => (
-          <BackgroundList
-            li={li}
-            key={li}
-            idx={idx}
-            backgroundlist={backgroundlist}
-          />
-        ))}
-      </ul>
+      <div
+        className="mb-[20px] text-xl font-bold text-white cursor-pointer flex items-center justify-between w-full"
+        onClick={() => {
+          setAccordian((prev) => !prev);
+        }}
+      >
+        <h3>BACKGROUND</h3>
+        <RiArrowRightSLine
+          style={{ transform: accordian ? "rotate(-90deg)" : "rotate(90deg)" }}
+        />
+      </div>
+      {accordian && (
+        <ul className="flex flex-col gap-3 mb-[20px]">
+          {backgroundlist.map((li, idx) => (
+            <BackgroundList
+              li={li}
+              key={li}
+              idx={idx}
+              backgroundlist={backgroundlist}
+            />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
@@ -316,15 +387,28 @@ const BackgroundList = ({
   );
 };
 const Models = () => {
+  const [accordian, setAccordian] = useState(false);
   const modellist = ["model1", "model2", "model3", "model4"];
   return (
     <>
-      <h3 className="mb-[20px] text-xl font-bold text-white">모델</h3>
-      <ul className="flex flex-col gap-3">
-        {modellist.map((li, idx) => (
-          <ModelsList li={li} key={li} idx={idx} modellist={modellist} />
-        ))}
-      </ul>
+      <div
+        className="mb-[20px] text-xl font-bold text-white cursor-pointer flex items-center justify-between w-full"
+        onClick={() => {
+          setAccordian((prev) => !prev);
+        }}
+      >
+        <h3>MODEL</h3>
+        <RiArrowRightSLine
+          style={{ transform: accordian ? "rotate(-90deg)" : "rotate(90deg)" }}
+        />
+      </div>
+      {accordian && (
+        <ul className="flex flex-col gap-3 mb-[20px]">
+          {modellist.map((li, idx) => (
+            <ModelsList li={li} key={li} idx={idx} modellist={modellist} />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
@@ -371,6 +455,7 @@ const ModelsList = ({
   );
 };
 const SideCameraTab = () => {
+  const [accordian, setAccordian] = useState(false);
   const cameraRotation = [
     {
       name: "전방",
@@ -408,17 +493,29 @@ const SideCameraTab = () => {
 
   return (
     <>
-      <h3 className="mb-[20px] text-xl font-bold text-white">카메라</h3>
-      <ul className="flex flex-col gap-3">
-        {cameraRotation.map((li, idx) => (
-          <CameraList
-            name={li.name}
-            key={li.name}
-            idx={idx}
-            cameraRotation={li.rotation}
-          />
-        ))}
-      </ul>
+      <div
+        className="mb-[20px] text-xl font-bold text-white cursor-pointer flex items-center justify-between w-full"
+        onClick={() => {
+          setAccordian((prev) => !prev);
+        }}
+      >
+        <h3>CAMERA</h3>
+        <RiArrowRightSLine
+          style={{ transform: accordian ? "rotate(-90deg)" : "rotate(90deg)" }}
+        />
+      </div>
+      {accordian && (
+        <ul className="flex flex-col gap-3 mb-[30px]">
+          {cameraRotation.map((li, idx) => (
+            <CameraList
+              name={li.name}
+              key={li.name}
+              idx={idx}
+              cameraRotation={li.rotation}
+            />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
@@ -449,7 +546,6 @@ const CameraList = ({
     const { value } = e.target;
     const rotation = e.target.dataset.rotation;
     const rotationArry = JSON.parse(rotation!);
-    console.log(rotationArry);
 
     setCameraAtom((prev: cameraType) => ({
       name: value,

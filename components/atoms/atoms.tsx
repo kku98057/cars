@@ -6,7 +6,7 @@ export const AtomBumperColors = atom<string>({
 });
 export const AtomTab = atom({
   key: "AtomTabKey",
-  default: "color",
+  default: "model",
 });
 export const AtomGearColors = atom<string>({
   key: "AtomGearColorsKey",
@@ -48,3 +48,8 @@ type cameraType = {
     z: number;
   };
 };
+
+export const AtomProgress = atom({
+  key: "AtomProgressKay",
+  default: true,
+});

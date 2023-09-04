@@ -7,7 +7,7 @@ import { Suspense } from "react";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <RecoilRoot>
-      <main className="bg min-h-screen flex-1">{children}</main>
+      <main className="flex-1 min-h-screen bg">{children}</main>
       <SideBar />
     </RecoilRoot>
   );

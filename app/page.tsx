@@ -14,24 +14,26 @@ import {
   useProgress,
 } from "@react-three/drei";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import {
   AtomCameraPosition,
   AtomMaps,
   AtomModel,
   AtomOrbitEnable,
+  AtomProgress,
 } from "@/components/atoms/atoms";
 import { useControls, button, buttonGroup, folder } from "leva";
 import { Model3 } from "@/components/objects/Model3";
 import { Model4 } from "@/components/objects/Model4";
-import Loading from "@/components/layout/Loading";
+import gsap from "gsap";
+import Image from "next/image";
 
 export default function Page() {
   return (
     <section>
-      <div className="top-0 h-screen w-screen">
+      <div className="top-0 w-screen h-screen">
         <Canvas>
           <Suspense fallback={<Loader />}>
             <MyScene />
@@ -47,9 +49,8 @@ type nowPosition = {
   z: number;
 };
 const MyScene = () => {
-  const [color, setColor] = useState("white");
-  const envMap = useEnvironment({ files: "/envi_2k.hdr" });
   const [mapFile, setMapFile] = useRecoilState(AtomMaps);
+
   const [model, setModel] = useRecoilState(AtomModel);
   const [orbitEnable, setOrbitEnable] = useRecoilState(AtomOrbitEnable);
   const [cameraPosition, setCameraPosition] =
@@ -75,19 +76,14 @@ const MyScene = () => {
   useEffect(() => {
     if (camera instanceof THREE.PerspectiveCamera) {
       camera.aspect = width / height;
+      camera.lookAt(0, 0, 0);
       camera.updateProjectionMatrix();
     }
   }, [width, height, camera]);
-
+  // https://threejs.org/examples/textures/memorial.hdr
   return (
     <>
       <Environment files={`/${mapFile}`} ground={{ height: 20, radius: 130 }} />
-      {/* <Environment
-        files={
-          "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/sunset_fairway_8k.hdr"
-        }
-        ground={{ height: 20, radius: 130 }}
-      /> */}
 
       {model === "model1" && (
         <Model position={[0, 10, 0]} rotation={[0, 0, 0]} scale={15} />
@@ -137,9 +133,17 @@ const MyScene = () => {
 };
 function Loader() {
   const { active, progress, errors, item, loaded, total } = useProgress();
+  const [atomProgress, setAtomProgress] = useRecoilState(AtomProgress);
+
+  if (progress >= 100) {
+    setAtomProgress(false);
+  }
   return (
-    <Html center className="w-screen h-screen fixed top-0 z-10">
-      <span className=" text-red-50">{progress} % loaded</span>
+    <Html
+      center
+      className="fixed top-0 z-10 flex items-center justify-center w-screen h-screen bg-slate-800"
+    >
+      <span className="text-5xl text-red-50">{progress.toFixed(0)}%</span>
     </Html>
   );
 }
