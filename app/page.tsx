@@ -5,11 +5,14 @@ import { Model2 } from "@/components/objects/Model2";
 import * as THREE from "three";
 
 import {
+  AccumulativeShadows,
   Center,
+  ContactShadows,
   Environment,
   Html,
   OrbitControls,
   PerspectiveCamera,
+  RandomizedLight,
   useEnvironment,
   useProgress,
 } from "@react-three/drei";
@@ -29,6 +32,7 @@ import { Model3 } from "@/components/objects/Model3";
 import { Model4 } from "@/components/objects/Model4";
 import gsap from "gsap";
 import Image from "next/image";
+import InLoader from "@/components/InLoader";
 
 export default function Page() {
   return (
@@ -81,16 +85,23 @@ const MyScene = () => {
     }
   }, [width, height, camera]);
   // https://threejs.org/examples/textures/memorial.hdr
+
   return (
     <>
-      <Environment files={`/${mapFile}`} ground={{ height: 20, radius: 130 }} />
+      <Suspense fallback={<InLoader />}>
+        <Environment
+          files={`/${mapFile}`}
+          ground={{ height: 20, radius: 130 }}
+        />
+      </Suspense>
 
       {model === "model1" && (
-        <Model position={[0, 10, 0]} rotation={[0, 0, 0]} scale={15} />
+        <Model position={[0, 9, 0]} rotation={[0, 0, 0]} scale={15} />
       )}
+
       {model === "model2" && (
         <Model2
-          position={[0, 0, 0]}
+          position={[0, -1, 0]}
           rotation={[0, Math.PI / 8, 0]}
           scale={12}
         />
@@ -109,6 +120,15 @@ const MyScene = () => {
           scale={12}
         />
       )}
+      <ContactShadows
+        opacity={0.5}
+        scale={100}
+        blur={1}
+        far={100}
+        resolution={1920}
+        color="#000000"
+        position={[0, 0, 0]}
+      />
 
       <OrbitControls
         enableZoom={true}

@@ -27,7 +27,7 @@ export const AtomModel = atom<string>({
 export const AtomCameraPosition = atom<cameraType>({
   key: "AtomCameraPositionKey",
   default: {
-    name: "옆면",
+    name: "SIDE",
     rotation: {
       x: 69,
       y: 38,

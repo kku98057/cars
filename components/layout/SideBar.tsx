@@ -470,7 +470,7 @@ const SideCameraTab = () => {
   const [accordian, setAccordian] = useState(false);
   const cameraRotation = [
     {
-      name: "전방",
+      name: "FRONT",
       rotation: {
         x: -0.7438445817482203,
         y: 23.314792253917872,
@@ -478,7 +478,7 @@ const SideCameraTab = () => {
       },
     },
     {
-      name: "옆면",
+      name: "SIDE",
       rotation: {
         x: 69,
         y: 38,
@@ -486,7 +486,7 @@ const SideCameraTab = () => {
       },
     },
     {
-      name: "후방",
+      name: "BACK",
       rotation: {
         x: -4.280632566387441,
         y: 33.86386293929124,
@@ -494,7 +494,7 @@ const SideCameraTab = () => {
       },
     },
     {
-      name: "윗면",
+      name: "TOP",
       rotation: {
         x: 0.00008178442246955136,
         y: 81.78630692232865,

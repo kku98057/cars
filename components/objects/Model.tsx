@@ -110,7 +110,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   }, [wireFrame]);
 
   return (
-    <group {...props} dispose={null} name="mesh">
+    <group {...props} dispose={null} name="mesh" castShadow receiveShadow>
       <group
         position={[0, -0.009, 0.063]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -327,12 +327,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
           material={materials["full_black.001"]}
           scale={[0.332, 0.318, 0.318]}
         />
-        <mesh
-          geometry={nodes.Plane_0.geometry}
-          material={materials["Material.003"]}
-          position={[0, 0, -1.054]}
-          scale={[6.953, 9.785, 7.496]}
-        />
+
         <mesh
           geometry={nodes.Plane001_0.geometry}
           material={materials["tex_shiny.001"]}
