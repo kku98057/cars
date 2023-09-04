@@ -222,7 +222,7 @@ const BumberLists = ({
     <li>
       <label htmlFor={`bumperColor_${li}`} className="flex items-center gap-2">
         <input
-          type="radio"
+          type="color"
           name="bumperColor"
           id={`bumperColor_${li}`}
           className="h-[15px] w-[15px]"
@@ -260,7 +260,7 @@ const GearLists = ({
     <li>
       <label htmlFor={`gearColor_${li}`} className="flex items-center gap-2">
         <input
-          type="radio"
+          type="color"
           name="gearColor"
           id={`gearColor_${li}`}
           className="h-[15px] w-[15px]"
@@ -300,7 +300,7 @@ const TireWheelLists = ({
         className="flex items-center gap-2"
       >
         <input
-          type="radio"
+          type="color"
           name="TireWheelColor"
           id={`TireWheelColor_${li}`}
           className="h-[15px] w-[15px]"
@@ -378,11 +378,14 @@ const BackgroundList = ({
 
   return (
     <li>
-      <label htmlFor={`bumperColor_${li}`} className="flex items-center gap-2">
+      <label
+        htmlFor={`backgroundColor_${li}`}
+        className="flex items-center gap-2"
+      >
         <input
           type="radio"
-          name="bumperColor"
-          id={`bumperColor_${li}`}
+          name="backgroundColor"
+          id={`backgroundColor_${li}`}
           className="h-[15px] w-[15px]"
           onChange={changeHandler}
           checked={map === li}
@@ -449,11 +452,11 @@ const ModelsList = ({
 
   return (
     <li>
-      <label htmlFor={`bumperColor_${li}`} className="flex items-center gap-2">
+      <label htmlFor={`model_${li}`} className="flex items-center gap-2">
         <input
           type="radio"
-          name="bumperColor"
-          id={`bumperColor_${li}`}
+          name="model"
+          id={`model_${li}`}
           className="h-[15px] w-[15px]"
           onChange={changeHandler}
           checked={model === li}
@@ -568,13 +571,13 @@ const CameraList = ({
   return (
     <li>
       <label
-        htmlFor={`bumperColor_${name}`}
+        htmlFor={`camera_position_${name}`}
         className="flex items-center gap-2"
       >
         <input
           type="radio"
-          name="bumperColor"
-          id={`bumperColor_${name}`}
+          name="camera_position"
+          id={`camera_position_${name}`}
           className="h-[15px] w-[15px]"
           onChange={changeHandler}
           checked={cameraAtom.name === name}
