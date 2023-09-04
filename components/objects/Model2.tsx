@@ -162,7 +162,15 @@ export function Model2(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.Object_11.geometry}
               material={materials["930_rim.006"]}
-            />
+            >
+              {tireWheelColors !== "base" && (
+                <meshStandardMaterial
+                  metalness={0.3}
+                  roughness={0.01}
+                  color={new THREE.Color(tireWheelColors)}
+                />
+              )}
+            </mesh>
             <mesh
               geometry={nodes.Object_12.geometry}
               material={materials["930_tire.006"]}
@@ -172,7 +180,15 @@ export function Model2(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.Object_8.geometry}
               material={materials["930_rim.006"]}
-            />
+            >
+              {tireWheelColors !== "base" && (
+                <meshStandardMaterial
+                  metalness={0.3}
+                  roughness={0.01}
+                  color={new THREE.Color(tireWheelColors)}
+                />
+              )}
+            </mesh>
             <mesh
               geometry={nodes.Object_9.geometry}
               material={materials["930_tire.006"]}
@@ -186,7 +202,15 @@ export function Model2(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.Object_117.geometry}
               material={materials["930_rim.006"]}
-            />
+            >
+              {tireWheelColors !== "base" && (
+                <meshStandardMaterial
+                  metalness={0.3}
+                  roughness={0.01}
+                  color={new THREE.Color(tireWheelColors)}
+                />
+              )}
+            </mesh>
             <mesh
               geometry={nodes.Object_118.geometry}
               material={materials["930_tire.006"]}
@@ -199,7 +223,15 @@ export function Model2(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.Object_88.geometry}
               material={materials["930_rim.006"]}
-            />
+            >
+              {tireWheelColors !== "base" && (
+                <meshStandardMaterial
+                  metalness={0.3}
+                  roughness={0.01}
+                  color={new THREE.Color(tireWheelColors)}
+                />
+              )}
+            </mesh>
             <mesh
               geometry={nodes.Object_89.geometry}
               material={materials["930_tire.006"]}

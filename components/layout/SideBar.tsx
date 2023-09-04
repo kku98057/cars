@@ -120,7 +120,14 @@ const SideColorTab = () => {
   );
 };
 const Bumpers = () => {
-  const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
+  const colorsLists = [
+    "base",
+    "#000000",
+    "#7A7977",
+    "#F7F7F7",
+    "#B12B28",
+    "#02A1C0",
+  ];
   const [accordian, setAccordian] = useState(false);
   return (
     <>
@@ -147,7 +154,14 @@ const Bumpers = () => {
 };
 const Gears = () => {
   const [accordian, setAccordian] = useState(false);
-  const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
+  const colorsLists = [
+    "base",
+    "#000000",
+    "#7A7977",
+    "#F7F7F7",
+    "#B12B28",
+    "#02A1C0",
+  ];
   return (
     <>
       <div
@@ -173,7 +187,14 @@ const Gears = () => {
 };
 const TireWheel = () => {
   const [accordian, setAccordian] = useState(false);
-  const colorsLists = ["base", "#6fe362", "#ca2f2f", "#b4ffff", "#5ccfbb"];
+  const colorsLists = [
+    "base",
+    "#000000",
+    "#7A7977",
+    "#F7F7F7",
+    "#B12B28",
+    "#02A1C0",
+  ];
   return (
     <>
       <div
@@ -222,7 +243,7 @@ const BumberLists = ({
     <li>
       <label htmlFor={`bumperColor_${li}`} className="flex items-center gap-2">
         <input
-          type="color"
+          type="radio"
           name="bumperColor"
           id={`bumperColor_${li}`}
           className="h-[15px] w-[15px]"
@@ -260,7 +281,7 @@ const GearLists = ({
     <li>
       <label htmlFor={`gearColor_${li}`} className="flex items-center gap-2">
         <input
-          type="color"
+          type="radio"
           name="gearColor"
           id={`gearColor_${li}`}
           className="h-[15px] w-[15px]"
@@ -300,7 +321,7 @@ const TireWheelLists = ({
         className="flex items-center gap-2"
       >
         <input
-          type="color"
+          type="radio"
           name="TireWheelColor"
           id={`TireWheelColor_${li}`}
           className="h-[15px] w-[15px]"

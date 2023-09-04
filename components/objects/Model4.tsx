@@ -398,7 +398,6 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             material={materials.Glass}
           >
             <meshPhysicalMaterial
-              side={THREE.DoubleSide}
               opacity={0.1}
               blending={THREE.CustomBlending}
             />
@@ -409,9 +408,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                side={THREE.DoubleSide}
                 metalness={0.5}
-                roughness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -467,9 +465,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                side={THREE.DoubleSide}
                 metalness={0.5}
-                roughness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -504,7 +501,6 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             material={materials.Glass}
           >
             <meshPhysicalMaterial
-              side={THREE.DoubleSide}
               opacity={0.1}
               blending={THREE.CustomBlending}
             />
@@ -515,9 +511,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                side={THREE.DoubleSide}
                 metalness={0.5}
-                roughness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -551,9 +546,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                side={THREE.DoubleSide}
                 metalness={0.5}
-                roughness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -591,9 +585,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                side={THREE.DoubleSide}
                 metalness={0.5}
-                roughness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -607,9 +600,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                side={THREE.DoubleSide}
                 metalness={0.5}
-                roughness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -658,7 +650,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.g_Wheel_Hub_LF_SUB1_Brake_Caliper_0.geometry}
               material={materials.Brake_Caliper}
-            />
+            >
+              {gearColors !== "base" && (
+                <meshPhysicalMaterial
+                  metalness={0.5}
+                  roughness={0.01}
+                  ior={1.5}
+                  color={new THREE.Color(gearColors)}
+                />
+              )}
+            </mesh>
           </group>
         </group>
         <group position={[78.749, 33.225, -141.953]}>
@@ -699,7 +700,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.g_Wheel_Hub_LR_SUB1_Brake_Caliper_0.geometry}
               material={materials.Brake_Caliper}
-            />
+            >
+              {gearColors !== "base" && (
+                <meshPhysicalMaterial
+                  metalness={0.5}
+                  roughness={0.01}
+                  ior={1.5}
+                  color={new THREE.Color(gearColors)}
+                />
+              )}
+            </mesh>
           </group>
         </group>
         <group position={[-78.749, 31.851, 120.457]}>
@@ -729,7 +739,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.g_Wheel_Hub_RF_SUB1_Brake_Caliper_0.geometry}
               material={materials.Brake_Caliper}
-            />
+            >
+              {gearColors !== "base" && (
+                <meshPhysicalMaterial
+                  metalness={0.5}
+                  roughness={0.01}
+                  ior={1.5}
+                  color={new THREE.Color(gearColors)}
+                />
+              )}
+            </mesh>
           </group>
         </group>
         <group position={[-78.749, 33.225, -141.953]}>
@@ -765,7 +784,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.g_Wheel_Hub_RR_SUB1_Brake_Caliper_0.geometry}
               material={materials.Brake_Caliper}
-            />
+            >
+              {gearColors !== "base" && (
+                <meshPhysicalMaterial
+                  metalness={0.5}
+                  roughness={0.01}
+                  ior={1.5}
+                  color={new THREE.Color(gearColors)}
+                />
+              )}
+            </mesh>
           </group>
         </group>
         <group position={[78.749, 31.851, 120.457]}>
@@ -774,7 +802,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
               geometry={nodes.g_RIM_LF_2_Carpaint_Main_0.geometry}
               material={materials.Carpaint_Main}
               position={[0, -0.008, 0]}
-            />
+            >
+              {tireWheelColors !== "base" && (
+                <meshPhysicalMaterial
+                  metalness={0.5}
+                  roughness={0.01}
+                  ior={1.5}
+                  color={new THREE.Color(tireWheelColors)}
+                />
+              )}
+            </mesh>
           </group>
           <mesh
             geometry={nodes.g_Wheel_Tyre_Tread_LF_2_Tyre_Tread_0.geometry}
@@ -787,7 +824,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             geometry={nodes.g_RIM_LR_2_Carpaint_Main_0.geometry}
             material={materials.Carpaint_Main}
             position={[0, 0, -0.001]}
-          />
+          >
+            {tireWheelColors !== "base" && (
+              <meshPhysicalMaterial
+                metalness={0.5}
+                roughness={0.3}
+                ior={1.5}
+                color={new THREE.Color(tireWheelColors)}
+              />
+            )}
+          </mesh>
           <mesh
             geometry={nodes.g_Wheel_Tyre_Tread_LR_2_Tyre_Tread_0.geometry}
             material={materials.Tyre_Tread}
@@ -799,7 +845,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             geometry={nodes.g_RIM_RF_2_Carpaint_Main_0.geometry}
             material={materials.Carpaint_Main}
             position={[0, 0, -0.002]}
-          />
+          >
+            {tireWheelColors !== "base" && (
+              <meshPhysicalMaterial
+                metalness={0.5}
+                roughness={0.3}
+                ior={1.5}
+                color={new THREE.Color(tireWheelColors)}
+              />
+            )}
+          </mesh>
           <mesh
             geometry={nodes.g_Wheel_Tyre_Tread_RF_2_Tyre_Tread_0.geometry}
             material={materials.Tyre_Tread}
@@ -811,7 +866,16 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
             geometry={nodes.g_RIM_RR_2_Carpaint_Main_0.geometry}
             material={materials.Carpaint_Main}
             position={[0, 0, -0.001]}
-          />
+          >
+            {tireWheelColors !== "base" && (
+              <meshPhysicalMaterial
+                metalness={0.5}
+                roughness={0.3}
+                ior={1.5}
+                color={new THREE.Color(tireWheelColors)}
+              />
+            )}
+          </mesh>
           <mesh
             geometry={nodes.g_Wheel_Tyre_Tread_RR_2_Tyre_Tread_0.geometry}
             material={materials.Tyre_Tread}
@@ -964,9 +1028,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
         >
           {bumperColors !== "base" && (
             <meshPhysicalMaterial
-              side={THREE.DoubleSide}
               metalness={0.5}
-              roughness={0.3}
+              roughness={0.01}
               ior={1.5}
               color={new THREE.Color(bumperColors)}
             />
@@ -1173,9 +1236,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
         >
           {bumperColors !== "base" && (
             <meshPhysicalMaterial
-              side={THREE.DoubleSide}
               metalness={0.5}
-              roughness={0.3}
+              roughness={0.01}
               ior={1.5}
               color={new THREE.Color(bumperColors)}
             />
@@ -1218,11 +1280,7 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
           material={materials.INT_Glass_side}
           name="window"
         >
-          <meshPhysicalMaterial
-            opacity={0.1}
-            blending={THREE.CustomBlending}
-            side={THREE.DoubleSide}
-          />
+          <meshPhysicalMaterial opacity={0.1} blending={THREE.CustomBlending} />
         </mesh>
         <mesh
           geometry={nodes.g_BODY_EXT_SUB4_Rubber_Black_0.geometry}
@@ -1251,9 +1309,8 @@ export function Model4(props: JSX.IntrinsicElements["group"]) {
         >
           {bumperColors !== "base" && (
             <meshPhysicalMaterial
-              side={THREE.DoubleSide}
               metalness={0.5}
-              roughness={0.3}
+              roughness={0.01}
               ior={1.5}
               color={new THREE.Color(bumperColors)}
             />

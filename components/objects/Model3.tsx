@@ -255,8 +255,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -272,8 +272,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -288,8 +288,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -304,8 +304,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -336,8 +336,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -355,8 +355,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -368,8 +368,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -421,8 +421,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -440,8 +440,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -453,8 +453,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -489,8 +489,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -533,8 +533,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -592,8 +592,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {bumperColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(bumperColors)}
                 />
@@ -612,8 +612,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {bumperColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(bumperColors)}
               />
@@ -636,8 +636,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -652,8 +652,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -668,8 +668,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -684,8 +684,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
           >
             {gearColors !== "base" && (
               <meshPhysicalMaterial
-                metalness={0.5}
-                roughness={0.3}
+                metalness={0.3}
+                roughness={0.01}
                 ior={1.5}
                 color={new THREE.Color(gearColors)}
               />
@@ -708,8 +708,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {tireWheelColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(tireWheelColors)}
                 />
@@ -733,8 +733,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {tireWheelColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(tireWheelColors)}
                 />
@@ -758,8 +758,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {tireWheelColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(tireWheelColors)}
                 />
@@ -783,8 +783,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
             >
               {tireWheelColors !== "base" && (
                 <meshPhysicalMaterial
-                  metalness={0.5}
-                  roughness={0.3}
+                  metalness={0.3}
+                  roughness={0.01}
                   ior={1.5}
                   color={new THREE.Color(tireWheelColors)}
                 />
@@ -1048,8 +1048,8 @@ export function Model3(props: JSX.IntrinsicElements["group"]) {
         >
           {bumperColors !== "base" && (
             <meshPhysicalMaterial
-              metalness={0.5}
-              roughness={0.3}
+              metalness={0.3}
+              roughness={0.01}
               ior={1.5}
               color={new THREE.Color(bumperColors)}
             />
