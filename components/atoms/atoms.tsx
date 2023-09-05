@@ -18,7 +18,8 @@ export const AtomTireWheelColors = atom<string>({
 });
 export const AtomMaps = atom<string>({
   key: "AtomMapsKey",
-  default: "blouberg_sunrise_2_1k.hdr",
+  default:
+    "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/school_quad_4k.hdr",
 });
 export const AtomModel = atom<string>({
   key: "AtomModelKey",

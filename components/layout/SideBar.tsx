@@ -349,10 +349,24 @@ const SideBackgroundTab = () => {
 };
 const Backgrounds = () => {
   const [accordian, setAccordian] = useState(false);
+  // const backgroundlist = [
+  //   "blouberg_sunrise_2_1k.hdr",
+  //   "envi_2k.hdr",
+  //   "KNRT-old_depot_2k.hdr",
+  // ];
   const backgroundlist = [
-    "blouberg_sunrise_2_1k.hdr",
-    "envi_2k.hdr",
-    "KNRT-old_depot_2k.hdr",
+    {
+      name: "A",
+      src: "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/school_quad_4k.hdr",
+    },
+    {
+      name: "B",
+      src: "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/outdoor_umbrellas_4k.hdr",
+    },
+    {
+      name: "C",
+      src: "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/umhlanga_sunrise_4k.hdr",
+    },
   ];
   return (
     <>
@@ -371,10 +385,10 @@ const Backgrounds = () => {
         <ul className="flex flex-col gap-3 mb-[20px]">
           {backgroundlist.map((li, idx) => (
             <BackgroundList
-              li={li}
-              key={li}
+              li={li.name}
+              key={li.name}
               idx={idx}
-              backgroundlist={backgroundlist}
+              backgroundlist={li.src}
             />
           ))}
         </ul>
@@ -389,7 +403,7 @@ const BackgroundList = ({
 }: {
   li: string;
   idx: number;
-  backgroundlist: string[];
+  backgroundlist: string;
 }) => {
   const [map, setMap] = useRecoilState(AtomMaps);
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -409,8 +423,8 @@ const BackgroundList = ({
           id={`backgroundColor_${li}`}
           className="h-[15px] w-[15px]"
           onChange={changeHandler}
-          checked={map === li}
-          value={li}
+          checked={map === backgroundlist}
+          value={backgroundlist}
         />
         <span style={{ color: "white" }} className="font-bold uppercase ">
           {li}

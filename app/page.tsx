@@ -87,11 +87,7 @@ const MyScene = () => {
 
   return (
     <>
-      <Environment
-        files={`https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/sunset_fairway_4k.hdr`}
-        ground={{ height: 20, radius: 130 }}
-      />
-      {/* <Environment files={`/${mapFile}`} ground={{ height: 20, radius: 130 }} /> */}
+      <Environment files={`${mapFile}`} ground={{ height: 25, radius: 130 }} />
 
       {model === "model1" && (
         <Model position={[0, 9.5, 0]} rotation={[0, 0, 0]} scale={15} />
