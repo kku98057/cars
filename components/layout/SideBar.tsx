@@ -356,15 +356,15 @@ const Backgrounds = () => {
   // ];
   const backgroundlist = [
     {
-      name: "A",
+      name: "COAT",
       src: "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/school_quad_4k.hdr",
     },
     {
-      name: "B",
+      name: "CITY",
       src: "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/outdoor_umbrellas_4k.hdr",
     },
     {
-      name: "C",
+      name: "BEACH",
       src: "https://sunhuweb.sgp1.cdn.digitaloceanspaces.com/umhlanga_sunrise_4k.hdr",
     },
   ];
